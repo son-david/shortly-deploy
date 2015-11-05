@@ -21,12 +21,14 @@ usersSchema.methods.hashPassword = function(attemptedPassword, callback) {
   return cipher(this.password, null, null).bind(this)
     .then(function(hash) {
       this.password = hash;
+      callback();
     });
 };
 
 usersSchema.pre('save', function(next){
-  this.hashPassword(this.password);
-  next();
+  this.hashPassword(this.password, function() {
+    next();
+  });
 });
 
 var User = db.model('User', usersSchema);

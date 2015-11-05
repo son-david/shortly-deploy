@@ -32,5 +32,8 @@
     "supertest": "^0.10.0"
   },
   "devDependencies": {
+  },
+  "scripts": {
+    "serve": "node-inspector & nodemon --debug server.js"
   }
 }

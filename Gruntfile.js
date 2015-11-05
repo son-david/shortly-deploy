@@ -100,7 +100,8 @@ module.exports = function(grunt) {
     var nodemon = grunt.util.spawn({
          cmd: 'grunt',
          grunt: true,
-         args: 'nodemon'
+         args: 'nodemon',
+         debug: true
     });
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
