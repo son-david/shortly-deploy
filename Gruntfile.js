@@ -55,7 +55,11 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-        // Add filespec list here
+      target : {
+        files: {
+          'public.dist/style.min.css' : ['public/style.css']
+        }
+      }
     },
 
     watch: {
@@ -112,7 +116,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['mochaTest', 'jshint', 'concat', 'uglify']);
+  grunt.registerTask('build', ['mochaTest', 'jshint', 'concat','cssmin', 'uglify']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
